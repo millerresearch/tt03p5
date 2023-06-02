@@ -5,10 +5,13 @@ project:
 
 # If using an HDL, set wokwi_id as 0 and uncomment and list your source files here. 
 # Source files must be in ./src and you must list each source file separately
-#  source_files:        
-#    - counter.v
-#    - decoder.v
-#  top_module:  "tt_um_example"      # Put the name of your top module here, must start with "tt_um_". Make it unique by prepending your github username
+source_files:        
+  - ringnode.v
+  - ringspi.v
+  - spinet.v
+  - spinode.v
+  - tt_um_millerresearch_top.v
+top_module:  "tt_um_millerresearch_top"      # Put the name of your top module here, must start with "tt_um_". Make it unique by prepending your github username
 
 # How many tiles your design occupies? A single tile is about 167x108 uM.
 # Before changing this, please reach out to us on discord to discuss your design.
@@ -22,10 +25,10 @@ yaml_version: 3.5
 #
 # Here is a great example: https://github.com/davidsiaw/tt02-davidsiaw-stackcalc/blob/38c5647f83aad2aec675d566aa3d67b98f0aac81/info.yaml
 documentation: 
-  author:       ""      # Your name
-  title:        ""      # Project title
-  language:     "Wokwi" # other examples include Verilog, Amaranth, VHDL, etc
-  description:  ""      # Short description of what your project does
+  author:       "Richard Miller"
+  title:        "SPINet"
+  language:     "Verilog"
+  description:  "Network On Chip for microcontroller clusters connected via SPI"
 
 # Longer description of how the project works. You can use standard markdown format.
   how_it_works: |
@@ -37,34 +40,34 @@ documentation:
 
 # A description of what the inputs do (e.g. red button, SPI CLK, SPI MOSI, etc).
   inputs:               
-    - none
-    - none
-    - none
-    - none
-    - none
-    - none
-    - none
-    - none
+    - Host 0 SS
+    - Host 0 SCLK
+    - Host 0 MOSI
+    - Host 1 SS
+    - Host 1 SCLK
+    - Host 1 MOSI
+    - Host 2 SS
+    - Host 2 SCLK
 # A description of what the outputs do (e.g. status LED, SPI MISO, etc)
   outputs:
-    - segment a
-    - segment b
-    - segment c
-    - segment d
-    - segment e
-    - segment f
-    - segment g
-    - dot
+    - Host 0 MISO
+    - Host 0 TXREADY
+    - Host 0 RXREADY
+    - Host 1 MISO
+    - Host 1 TXREADY
+    - Host 1 RXREADY
+    - Host 2 MISO
+    - Host 2 TXREADY
 # A description of what the bidirectional I/O pins do (e.g. I2C SDA, I2C SCL, etc)
   bidirectional:
-    - none
-    - none
-    - none
-    - none
-    - none
-    - none
-    - none
-    - none
+    - Host 2 MOSI
+    - Host 3 SS
+    - Host 3 SCLK
+    - Host 3 MOSI
+    - Host 2 RXREADY
+    - Host 3 MISO
+    - Host 3 TXREADY
+    - Host 3 RXREADY
 
 # The following fields are optional
   tag:          ""      # comma separated list of tags: test encryption, experiment, clock, animation, utility, industrial, pwm, fpga, alu, microprocessor, risc, riscv, sensor, signal generator, fft, filter, music, bcd, sound, serial, timer, random number generator, calculator, decoder, counter, puzzle, multiplier, game, oscillator,
