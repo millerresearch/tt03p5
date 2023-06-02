@@ -21,9 +21,9 @@ module tt_um_millerresearch_top (
 		.SCLK   ({ui_in[1],  ui_in[4],  ui_in[7],   uio_in[2]}),
 		.MOSI   ({ui_in[2],  ui_in[5],  uio_in[0],  uio_in[3]}),
 
-		.MISO   ({ui_out[0], ui_out[3], ui_out[6],  uio_out[5]}),
-		.txready({ui_out[1], ui_out[4], ui_out[7],  uio_out[6]}),
-		.rxready({ui_out[2], ui_out[5], uio_out[4], uio_out[7]}) 
+		.MISO   ({uo_out[0], uo_out[3], uo_out[6],  uio_out[5]}),
+		.txready({uo_out[1], uo_out[4], uo_out[7],  uio_out[6]}),
+		.rxready({uo_out[2], uo_out[5], uio_out[4], uio_out[7]}) 
 	);
 
 endmodule
