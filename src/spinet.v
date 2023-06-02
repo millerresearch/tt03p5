@@ -1,4 +1,4 @@
-module spinet #(parameter N=8, WIDTH=14, ABITS=2) (
+module spinet #(parameter N=8, WIDTH=16, ABITS=3) (
 	input clk,
 	input rst,
 	output [N-1:0] txready,
