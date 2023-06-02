@@ -9,8 +9,6 @@ module spinode #(parameter WIDTH=16, ABITS=3, ADDRESS=0) (
 );
 
 	wire [15:0] txdata, rxdata;
-	wire [13:0] toclient;
-	assign txdata = {toclient[13:12],1'b0,toclient[11:10],1'b0,toclient[9:8],toclient[7:0]};
 	wire mosivalid, mosiack, misovalid, misoack;
 		ringnode #(.WIDTH(WIDTH), .ABITS(ABITS), .ADDRESS(ADDRESS)) NODE (
 			.clk(clk),
@@ -18,7 +16,7 @@ module spinode #(parameter WIDTH=16, ABITS=3, ADDRESS=0) (
 			.fromring(fromring),
 			.toring(toring),
 			.fromclient({rxdata[15:14],rxdata[12:11],rxdata[9:8],rxdata[7:0]}),
-			.toclient(toclient),
+			.toclient({txdata[13:12],1'b0,txdata[11:10],1'b0,txdata[7:0]}),
 			.txready(txready),
 			.rxready(rxready),
 			.misovalid(misovalid),
